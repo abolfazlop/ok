@@ -32,7 +32,7 @@ public final class MainActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         TextView status = new TextView(this);
-        status.setText("نسخهٔ آزمایشی\n\nاین ماژول به فیلدهای استاندارد اندروید کمک می‌کند تا Bitwarden آن‌ها را بهتر تشخیص دهد. برای اثرگذاری، AutoPass X را در LSPosed فعال و برنامه‌های موردنظر را در Scope انتخاب کن.\n\nBitwarden باید سرویس Autofill پیش‌فرض اندروید باشد. اندروید هنگام درخواست، سرویس Bitwarden را حتی اگر رابط برنامه بسته باشد اجرا می‌کند؛ اگر خزانه قفل باشد، خود Bitwarden احراز هویت می‌خواهد.\n\nرمزها و محتوای واردشده توسط این ماژول خوانده یا ذخیره نمی‌شوند.");
+        status.setText("نسخهٔ آزمایشی\n\nاین ماژول به فیلدهای استاندارد اندروید کمک می‌کند تا Bitwarden آن‌ها را بهتر تشخیص دهد. برای اثرگذاری، AutoPass X را در LSPosed فعال و برنامه‌های موردنظر را در Scope انتخاب کن.\n\nBitwarden باید سرویس Autofill پیش‌فرض اندروید باشد. در Bitwarden از Settings > Autofill گزینه Ask to add item را هم فعال کن تا برای اطلاعات ورود جدید پیشنهاد ذخیره بیاید. برای Chrome و Brave، integration مربوط به همان مرورگر را نیز در تنظیمات Bitwarden فعال کن. اندروید هنگام درخواست، سرویس Bitwarden را حتی اگر رابط برنامه بسته باشد اجرا می‌کند؛ اگر خزانه قفل باشد، خود Bitwarden احراز هویت می‌خواهد.\n\nرمزها و محتوای واردشده توسط این ماژول خوانده یا ذخیره نمی‌شوند.");
         status.setTextSize(16);
         status.setPadding(0, dp(24), 0, dp(24));
         root.addView(status, new LinearLayout.LayoutParams(
