@@ -16,11 +16,11 @@ final class AutofillHintClassifier {
         if (importance == View.IMPORTANT_FOR_AUTOFILL_NO
                 || importance == View.IMPORTANT_FOR_AUTOFILL_NO_EXCLUDE_DESCENDANTS) return;
 
-        String[] existing = structure.getAutofillHints();
+        String[] existing = view.getAutofillHints();
         if (existing != null && existing.length > 0) return;
 
         String inferred = inferHint(view);
-        if (inferred != null) structure.setAutofillHints(inferred);
+        if (inferred != null) structure.setAutofillHints(new String[] { inferred });
     }
 
     private static String inferHint(TextView view) {
