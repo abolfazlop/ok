@@ -54,7 +54,7 @@ final class WebAutofillStructureClassifier {
         }
 
         String autocomplete = values.getOrDefault("autocomplete", "");
-        if (autocomplete.contains("off")) return;
+        if ("off".equals(autocomplete.trim())) return;
 
         String type = values.getOrDefault("type", "");
         String name = values.getOrDefault("name", "");
@@ -63,11 +63,11 @@ final class WebAutofillStructureClassifier {
         String metadata = name + " " + id + " " + placeholder;
 
         String autofillHint = null;
-        if (autocomplete.contains("current-password") || type.equals("password")
+        if (autocomplete.contains("new-password")) {
+            autofillHint = View.AUTOFILL_HINT_NEW_PASSWORD;
+        } else if (autocomplete.contains("current-password") || type.equals("password")
                 || containsAny(metadata, "password", "passwd", "passcode")) {
             autofillHint = View.AUTOFILL_HINT_PASSWORD;
-        } else if (autocomplete.contains("new-password")) {
-            autofillHint = View.AUTOFILL_HINT_NEW_PASSWORD;
         } else if (autocomplete.contains("username")
                 || containsAny(metadata, "username", "user_name", "login")) {
             autofillHint = View.AUTOFILL_HINT_USERNAME;
