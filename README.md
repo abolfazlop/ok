@@ -14,7 +14,7 @@ An LSPosed compatibility companion for Bitwarden on Android.
 
 ## Why this can help
 
-Android's Autofill framework sends a structured view tree to the selected Autofill service. Explicit autofillHints help the service recognize login fields. AutoPass X adds a hint only when a standard editable TextView is clearly identifiable and the app has not supplied its own hint.
+Android's Autofill framework sends a structured view tree to the selected Autofill service. Explicit autofillHints help the service recognize login fields. AutoPass X adds a hint only when a standard editable TextView is clearly identifiable and the app has not supplied its own hint. It does not modify WebView virtual structures.
 
 ## Scope
 
@@ -26,8 +26,9 @@ Android binds the selected Autofill service when an Autofill request occurs and 
 
 ## Known limitations
 
-- This first compatibility hook only covers standard editable Android text views.
-- Jetpack Compose, custom canvas fields, virtual WebView fields, and apps that opt out of Autofill need separate compatibility work.
+- The current compatibility hook covers standard editable Android text views only.
+- Jetpack Compose, custom canvas fields, and WebView virtual fields need separate, implementation-specific work and are not claimed as supported yet.
+- Apps that opt out of Autofill remain opted out.
 - A save/update prompt after a successful login cannot be guaranteed in arbitrary apps; it depends on Android's save flow and Bitwarden's own service implementation.
 - Matching still depends on Bitwarden's vault URI associations and its Autofill configuration.
 
