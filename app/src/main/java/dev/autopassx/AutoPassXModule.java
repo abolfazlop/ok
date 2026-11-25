@@ -2,7 +2,6 @@ package dev.autopassx;
 
 import android.util.Log;
 import android.view.ViewStructure;
-import android.webkit.WebView;
 import android.widget.TextView;
 import io.github.libxposed.api.XposedModule;
 import io.github.libxposed.api.XposedModuleInterface;
@@ -38,20 +37,6 @@ public final class AutoPassXModule extends XposedModule {
             });
             log(Log.INFO, TAG, "Installed Autofill hint hook for " + packageName);
 
-            Class<?> webViewClass = Class.forName("android.webkit.WebView", false,
-                    param.getClassLoader());
-            Method virtualStructure = webViewClass.getMethod(
-                    "onProvideAutofillVirtualStructure", ViewStructure.class, int.class);
-            hook(virtualStructure).setId("web-autofill-hints-" + packageName).intercept(chain -> {
-                Object result = chain.proceed();
-                Object receiver = chain.getThisObject();
-                Object structure = chain.getArg(0);
-                if (receiver instanceof WebView && structure instanceof ViewStructure) {
-                    WebAutofillStructureClassifier.apply((ViewStructure) structure);
-                }
-                return result;
-            });
-            log(Log.INFO, TAG, "Installed WebView virtual-field hook for " + packageName);
         } catch (Throwable t) {
             log(Log.WARN, TAG, "Could not install Autofill hint hook for " + packageName, t);
         }
