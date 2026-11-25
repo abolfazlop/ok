@@ -20,7 +20,7 @@ Android's Autofill framework sends a structured view tree to the selected Autofi
 
 Recommended scope includes Bitwarden and several common browsers. staticScope=false allows the user to add other apps in LSPosed Manager. For wider app coverage, enable AutoPass X for the apps where login fields should be improved. Do not enable it for system_server or System UI.
 
-## Background behavior
+## Bitwarden setup\n\n- Select Bitwarden as Android's preferred Autofill service.\n- In Bitwarden Settings → Autofill, enable Ask to add item if you want save prompts for new credentials.\n- For Chrome and Brave, enable the browser integration inside Bitwarden as required by the current Bitwarden Android guide.\n\n## Background behavior
 
 Android binds the selected Autofill service when an Autofill request occurs and may start its process if needed. The service is intentionally not required to keep a permanent background process alive. AutoPass X does not bypass Bitwarden's vault lock, master password, or biometric confirmation.
 
